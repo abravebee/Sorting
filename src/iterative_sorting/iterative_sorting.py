@@ -34,14 +34,44 @@ def selection_sort( arr ):
     print(arr)
     return arr
 
-testArr = [3, 2, 4, 0]
-selection_sort(testArr)
+# testArr = [3, 2, 4, 0]
+# selection_sort(testArr)
 
 # TO-DO:  implement the Bubble Sort function below
 def bubble_sort( arr ):
+    print("start: ", arr)
 
+    j = 0
+    swap = 0
+
+    while True:
+        i = j
+        cur_index = i
+        next_index = i+1
+        last_index = (len(arr) - 1)
+        if len(arr) == 0:
+            break
+        elif arr[cur_index] == arr[last_index]: # if this is the last index
+            if swap == 0: # and no swaps have occurred
+                break
+            elif swap > 0: # and swaps HAVE occurred
+                j = 0 # start at beginning
+                swap = 0 # start fresh swap count
+                continue
+        if arr[cur_index] > arr[next_index]:
+            hold = arr[next_index]
+            arr[next_index] = arr[cur_index]
+            arr[cur_index] = hold
+            swap = swap+1
+            continue
+        else:
+            j = i+1
+            continue
+    
     return arr
 
+bubbleArr = [1, 4, 3, 0, 2]
+print(bubble_sort(bubbleArr))
 
 # STRETCH: implement the Count Sort function below
 def count_sort( arr, maximum=-1 ):
