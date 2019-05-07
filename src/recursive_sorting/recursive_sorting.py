@@ -9,13 +9,13 @@ def merge( arrA, arrB ):
     i = 0
     j = 0
     k = 0
-    for i in range(i, elements):
-        if arrA[j] < arrB[k]:
-            merged_arr[i] = arrA[j]
-            j += 1
-        else:
-            merged_arr[i] = arrB[k]
-            k += 1
+    # for i in range(i, elements):
+    #     if arrA[j] < arrB[k]:
+    #         merged_arr[i] = arrA[j]
+    #         j += 1
+    #     else:
+    #         merged_arr[i] = arrB[k]
+    #         k += 1
             
     # loop thru elements
     # compare arrA values to arrB values to find smallest
@@ -35,15 +35,13 @@ def merge_sort( arr ):
         # mid = length/2
     if len(arr) > 1:
         mid = int(len(arr)/2)
-        lhs = arr[mid:]
-        rhs = arr[:mid]
-    # call recursively to split
-        merge_sort(lhs);
-        merge_sort(rhs);
+        # call recursively to split
+        lhs = merge_sort(arr[mid:])
+        rhs = merge_sort(arr[:mid])
     # call merge(lhs,rhs)
         return merge(lhs, rhs)
     # else:
-    return ("arr", arr)
+    return arr
 
 print(merge_sort([0, 1, 5, 7, 3, 8]))
 
