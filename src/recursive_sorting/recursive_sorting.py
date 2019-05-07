@@ -6,6 +6,17 @@ def merge( arrA, arrB ):
     merged_arr = [0] * elements
     print(f"merged_arr: {merged_arr}")
     # TO-DO
+    i = 0
+    j = 0
+    k = 0
+    for i in range(i, elements):
+        if arrA[j] < arrB[k]:
+            merged_arr[i] = arrA[j]
+            j += 1
+        else:
+            merged_arr[i] = arrB[k]
+            k += 1
+            
     # loop thru elements
     # compare arrA values to arrB values to find smallest
     # replace value on merged arr? why not push onto empty arr?
@@ -30,9 +41,9 @@ def merge_sort( arr ):
         merge_sort(lhs);
         merge_sort(rhs);
     # call merge(lhs,rhs)
-        merge(lhs, rhs)
+        return merge(lhs, rhs)
     # else:
-    return arr
+    return ("arr", arr)
 
 print(merge_sort([0, 1, 5, 7, 3, 8]))
 
