@@ -1,8 +1,10 @@
 # TO-DO: complete the helpe function below to merge 2 sorted arrays
 def merge( arrA, arrB ):
     elements = len( arrA ) + len( arrB )
-    print(elements)
+    print(f"merge({arrA}, {arrB})")
+    print("elements", elements)
     merged_arr = [0] * elements
+    print(f"merged_arr: {merged_arr}")
     # TO-DO
     # loop thru elements
     # compare arrA values to arrB values to find smallest
@@ -13,19 +15,26 @@ def merge( arrA, arrB ):
     # j++ or k++ respectively when value IS smaller
     return merged_arr
 
-print(merge([1], [2]))
 
 # TO-DO: implement the Merge Sort function below USING RECURSION
 def merge_sort( arr ):
     # TO-DO
-    # if length is > 1
+     # if length is > 1
         # split using [mid:] = lhs and [:mid] = rhs
         # mid = length/2
+    if len(arr) > 1:
+        mid = int(len(arr)/2)
+        lhs = arr[mid:]
+        rhs = arr[:mid]
     # call recursively to split
+        merge_sort(lhs);
+        merge_sort(rhs);
     # call merge(lhs,rhs)
+        merge(lhs, rhs)
     # else:
     return arr
 
+print(merge_sort([0, 1, 5, 7, 3, 8]))
 
 # STRETCH: implement an in-place merge sort algorithm
 def merge_in_place(arr, start, mid, end):
