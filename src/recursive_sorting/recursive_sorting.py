@@ -9,13 +9,24 @@ def merge( arrA, arrB ):
     i = 0
     j = 0
     k = 0
-    # for i in range(i, elements):
-    #     if arrA[j] < arrB[k]:
-    #         merged_arr[i] = arrA[j]
-    #         j += 1
-    #     else:
-    #         merged_arr[i] = arrB[k]
-    #         k += 1
+
+    for i in range(i, elements):
+        print(f"arrA: {arrA}, arrB: {arrB}")
+        if j >= len(arrA): # arrA is exhausted
+            merged_arr[i] = arrB[k]
+            k += 1
+        elif k >= len(arrB): # arrB is exhausted
+            merged_arr[i] = arrA[j]
+            j += 1
+        elif arrA[j] < arrB[k]: # arrA[j] is smaller
+            merged_arr[i] = arrA[j]
+            j += 1
+            print(f"j: {j}")
+        elif arrB[k] < arrA[j]: # arrB[k] is smaller
+            merged_arr[i] = arrB[k]
+            print(f"{k}")
+            k += 1
+
             
     # loop thru elements
     # compare arrA values to arrB values to find smallest
@@ -31,15 +42,15 @@ def merge( arrA, arrB ):
 def merge_sort( arr ):
     # TO-DO
      # if length is > 1
-        # split using [mid:] = lhs and [:mid] = rhs
+        # split using [mid:] = rhs and [:mid] = lhs
         # mid = length/2
     if len(arr) > 1:
         mid = int(len(arr)/2)
         # call recursively to split
-        lhs = merge_sort(arr[mid:])
-        rhs = merge_sort(arr[:mid])
+        lhs = merge_sort(arr[:mid])
+        rhs = merge_sort(arr[mid:])
     # call merge(lhs,rhs)
-        return merge(lhs, rhs)
+        arr = merge(lhs, rhs)
     # else:
     return arr
 
